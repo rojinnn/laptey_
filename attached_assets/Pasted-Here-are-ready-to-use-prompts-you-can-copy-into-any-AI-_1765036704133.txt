@@ -1,0 +1,173 @@
+Here are **ready-to-use prompts** you can copy into any AI code generator (TeleportHQ, Vercel AI Code, Claude Artifacts, Replit Agent, etc.) to generate a **mobile-first shop site** with:
+
+* Next.js (SSR/ISR)
+* Stripe integration
+* Product pages
+* Cart + Checkout
+* Swipeable drawer (for cart or navigation)
+* Responsive UI
+
+I’ve included both **short prompts** and **full detailed prompts** depending on the tool.
+
+---
+
+# ✅ **1. Short Prompt (General / Fast Generation)**
+
+**Prompt:**
+“Create a **mobile-first e-commerce website** built with **Next.js (App Router)**, **React**, and **Tailwind CSS**.
+Include:
+
+* product listing page
+* dynamic product detail pages (`/products/[id]`)
+* shopping cart using React context
+* swipeable drawer for the cart (bottom or side drawer)
+* checkout page integrated with **Stripe Checkout**
+* server-side API routes for Stripe (`/api/checkout`)
+* clean, SEO-friendly design, fast and minimal
+* responsive UI optimized for mobile
+  Provide all code files and folder structure.”
+
+---
+
+# ✅ **2. Full Premium Prompt (Best for Top-Quality Output)**
+
+Use this in tools like **Claude**, **Replit Agent**, or **Vercel AI Code**.
+
+**Prompt:**
+“I want you to generate a complete, production-ready **Next.js (App Router)** e-commerce store.
+Requirements:
+
+### **Tech Stack**
+
+* Next.js 14+ (App Router, Server Components)
+* React
+* Tailwind CSS
+* Stripe for payments
+* TypeScript
+
+### **Core Features**
+
+1. **Homepage**: Hero banner, featured products, categories.
+2. **Product Listing Page** (`/products`):
+
+   * Mobile-first grid layout
+   * Pagination or infinite scroll
+3. **Dynamic Product Page** (`/products/[id]`):
+
+   * Product images
+   * Price
+   * Description
+   * “Add to Cart” button
+4. **Cart System**:
+
+   * Global state (Context API or Zustand)
+   * Add/remove/update quantity
+   * Subtotal calculation
+5. **Swipeable Drawer** (Mobile-first):
+
+   * Opens from bottom or side
+   * Contains cart items
+   * Checkout button
+6. **Checkout Page**:
+
+   * Powered by **Stripe Checkout**
+   * Serverless API route (`/api/checkout`) to create sessions
+   * Redirects user to secure Stripe hosted checkout
+7. **Success & Cancel Pages**
+8. **SEO**:
+
+   * Metadata API
+   * Canonical tags
+   * OpenGraph tags
+   * Schema markup
+9. **Folder Structure**
+
+```
+app/
+  layout.tsx
+  page.tsx
+  products/
+    page.tsx
+    [id]/
+      page.tsx
+  cart/
+    page.tsx
+  checkout/
+    page.tsx
+  success/
+  cancel/
+components/
+lib/
+  stripe.ts
+context/
+  CartContext.tsx
+```
+
+### **UI**
+
+* Fully responsive
+* Mobile-first
+* Clean minimalist design
+* Use a swipeable drawer for cart using Framer Motion or Headless UI
+
+### **Output**
+
+* Provide **all code files**
+* Include **instructions** to run Stripe locally (`STRIPE_SECRET_KEY`)
+* Provide **mock product data** as JSON
+
+Generate the entire project.”
+
+---
+
+# ✅ **3. Prompt for UI-First / Design-Oriented AI Builders**
+
+Use this for tools like **TeleportHQ**, **Uizard**, **Galileo AI**, etc.
+
+**Prompt:**
+“Generate a **mobile-first e-commerce design and UI** for a shop website.
+Pages needed:
+
+* Home
+* Product listing
+* Product detail
+* Cart (in a swipeable drawer)
+* Checkout
+  The design should support integration with:
+* Next.js
+* Stripe Checkout
+* Responsive Tailwind CSS classes.
+  Export the layout as Next.js/React components.”
+
+---
+
+# ✅ **4. Prompt for Code Scaffolding Only**
+
+If you want only the structure, not full pages:
+
+**Prompt:**
+“Generate a clean Next.js 14 project scaffold for a mobile-first ecommerce site with:
+
+* Stripe Checkout
+* `/products` and `/products/[id]`
+* Cart context
+* Swipeable cart drawer
+* API route for checkout
+  Provide folder structure + placeholder components.”
+
+---
+
+# ✔️ Want me to generate the **entire site code** for you too?
+
+I can generate:
+
+* Full Next.js project
+* Stripe API logic
+* Swipeable drawer components
+* Product pages
+* Cart logic
+
+Just tell me:
+👉 **“Generate the full code”**
+or
+👉 **“Generate section X only (cart, Stripe, drawer, etc.)”**

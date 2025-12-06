@@ -11,56 +11,56 @@ export interface Product {
 export const products: Product[] = [
   {
     id: "1",
-    name: "Lumina Horizon",
-    price: 299,
-    description: "The ultimate minimalist smart lamp. Adjusts to your circadian rhythm.",
-    category: "Lighting",
-    image: "https://images.unsplash.com/photo-1507473888900-52e1adad5474?q=80&w=1000&auto=format&fit=crop",
-    features: ["Auto-dimming", "App control", "Warm/Cool tones"]
+    name: "Areca Palm Round Plate",
+    price: 12.99,
+    description: "100% natural, biodegradable round plates made from fallen areca palm leaves. Perfect for eco-friendly dining.",
+    category: "Plates",
+    image: "https://images.unsplash.com/photo-1627483297929-37f416fec7cd?q=80&w=1000&auto=format&fit=crop",
+    features: ["100% Biodegradable", "Chemical Free", "Microwave Safe", "Compostable"]
   },
   {
     id: "2",
-    name: "Echo Bass Pro",
-    price: 199,
-    description: "High-fidelity wireless headphones with active noise cancellation.",
-    category: "Audio",
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop",
-    features: ["40h Battery", "ANC", "Spatial Audio"]
+    name: "Square Dinner Set",
+    price: 24.99,
+    description: "Elegant square plates that bring a rustic charm to your dining table. Sturdy and leak-proof.",
+    category: "Sets",
+    image: "https://images.unsplash.com/photo-1603194539162-4b2a8c3d0e2b?q=80&w=1000&auto=format&fit=crop",
+    features: ["Heat Resistant", "Durable", "Sustainable", "Handcrafted"]
   },
   {
     id: "3",
-    name: "Nomad Totepack",
-    price: 129,
-    description: "Versatile carry-all for the modern creative. Waterproof canvas.",
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1000&auto=format&fit=crop",
-    features: ["Waterproof", "Laptop sleeve", "Convertible"]
+    name: "Areca Leaf Bowls",
+    price: 8.50,
+    description: "Deep, natural bowls perfect for soups, salads, and curries. An eco-alternative to plastic.",
+    category: "Bowls",
+    image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=1000&auto=format&fit=crop",
+    features: ["Leak Proof", "Odorless", "Natural Texture", "Zero Waste"]
   },
   {
     id: "4",
-    name: "Apex Mechanical",
-    price: 149,
-    description: "Compact mechanical keyboard with satisfying tactile switches.",
-    category: "Tech",
-    image: "https://images.unsplash.com/photo-1587829741301-dc798b91a91e?q=80&w=1000&auto=format&fit=crop",
-    features: ["Hot-swappable", "RGB Backlight", "Wireless"]
+    name: "Eco Serving Platter",
+    price: 15.99,
+    description: "Large serving platters for parties and gatherings. Impress your guests with sustainability.",
+    category: "Platters",
+    image: "https://images.unsplash.com/photo-1605256585681-455837661b18?q=80&w=1000&auto=format&fit=crop",
+    features: ["Extra Strong", "Large Size", "Unique Patterns", "Eco-Conscious"]
   },
   {
     id: "5",
-    name: "Ceramic Pour-Over",
-    price: 45,
-    description: "Handcrafted ceramic coffee dripper for the perfect brew.",
-    category: "Home",
-    image: "https://images.unsplash.com/photo-1521424159246-e4a66f267e4b?q=80&w=1000&auto=format&fit=crop",
-    features: ["Handmade", "Heat retaining", "Minimalist"]
+    name: "Birchwood Cutlery Set",
+    price: 6.99,
+    description: "Smooth, splinter-free wooden forks, spoons, and knives to complement your eco-dinnerware.",
+    category: "Cutlery",
+    image: "https://images.unsplash.com/photo-1584346133934-a3afd2a3d996?q=80&w=1000&auto=format&fit=crop",
+    features: ["Biodegradable", "Smooth Finish", "FSC Certified", "Compostable"]
   },
   {
     id: "6",
-    name: "Analog Watch X",
-    price: 249,
-    description: "Timeless design meets modern durability. Sapphire crystal glass.",
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?q=80&w=1000&auto=format&fit=crop",
-    features: ["Sapphire Glass", "Swiss Movement", "Leather Strap"]
+    name: "Palm Leaf Compartment Plate",
+    price: 14.50,
+    description: "Convenient plates with sections, ideal for thalis, picnics, and buffets.",
+    category: "Plates",
+    image: "https://images.unsplash.com/photo-1516862523118-a3724eb136d7?q=80&w=1000&auto=format&fit=crop",
+    features: ["3 Compartments", "Sturdy", "Kid Friendly", "Natural"]
   }
 ];

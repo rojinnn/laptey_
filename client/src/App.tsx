@@ -11,6 +11,8 @@ import Home from "@/pages/home";
 import ProductList from "@/pages/product-list";
 import ProductDetail from "@/pages/product-detail";
 import Checkout from "@/pages/checkout";
+import CheckoutSuccess from "@/pages/checkout-success";
+import CheckoutCancel from "@/pages/checkout-cancel";
 import Contact from "@/pages/contact";
 
 function Router() {
@@ -21,6 +23,8 @@ function Router() {
         <Route path="/products" component={ProductList} />
         <Route path="/products/:id" component={ProductDetail} />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/checkout/success" component={CheckoutSuccess} />
+        <Route path="/checkout/cancel" component={CheckoutCancel} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>

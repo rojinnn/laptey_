@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
+import { redirectToCheckout } from "@/lib/stripe";
 
 interface CheckoutForm {
   email: string;
@@ -18,24 +19,24 @@ interface CheckoutForm {
 }
 
 export default function Checkout() {
-  const { items, cartTotal, clearCart } = useCart();
+  const { items, cartTotal } = useCart();
   const { register, handleSubmit, formState: { errors } } = useForm<CheckoutForm>();
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
-  const onSubmit = async (_data: CheckoutForm) => {
+  const onSubmit = async (data: CheckoutForm) => {
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    toast({
-      title: "Order Placed!",
-      description: "Thank you for your purchase.",
-    });
-
-    clearCart();
-    setLoading(false);
-    setLocation("/");
+    try {
+      await redirectToCheckout(items, data);
+    } catch (err) {
+      toast({
+        title: "Checkout failed",
+        description: err instanceof Error ? err.message : "Please try again.",
+        variant: "destructive",
+      });
+      setLoading(false);
+    }
   };
 
   if (items.length === 0) {
@@ -94,13 +95,14 @@ export default function Checkout() {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">Payment</h2>
               <div className="bg-muted p-4 rounded-lg border text-sm text-muted-foreground">
-                Payment processing will be integrated with Stripe. Your order will be confirmed upon submission.
+                You will be redirected to Stripe&apos;s secure checkout to complete payment.
+                Use test card <span className="font-mono">4242 4242 4242 4242</span> in demo mode.
               </div>
             </div>
 
             <Button type="submit" className="w-full h-12 text-lg mt-8" disabled={loading}>
               {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-              {loading ? "Processing..." : `Place Order — $${cartTotal.toFixed(2)}`}
+              {loading ? "Redirecting..." : `Pay with Stripe — $${cartTotal.toFixed(2)}`}
             </Button>
           </form>
         </div>

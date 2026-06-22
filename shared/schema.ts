@@ -16,3 +16,22 @@ export const insertUserSchema = createInsertSchema(users).pick({
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
+
+export const checkoutSchema = z.object({
+  items: z.array(z.object({
+    id: z.string(),
+    name: z.string().min(1),
+    price: z.number().positive(),
+    quantity: z.number().int().positive(),
+    image: z.string().url().optional(),
+  })).min(1),
+  customerEmail: z.string().email(),
+  customerName: z.string().min(1).optional(),
+  shippingAddress: z.object({
+    address: z.string().min(1),
+    city: z.string().min(1),
+    zip: z.string().min(1),
+  }).optional(),
+});
+
+export type CheckoutInput = z.infer<typeof checkoutSchema>;

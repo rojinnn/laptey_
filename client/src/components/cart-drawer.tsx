@@ -67,7 +67,7 @@ export function CartDrawer() {
                           <h3>
                             <Link href={`/products/${item.id}`}>{item.name}</Link>
                           </h3>
-                          <p className="ml-4">${item.price * item.quantity}</p>
+                          <p className="ml-4">${(item.price * item.quantity).toFixed(2)}</p>
                         </div>
                         <p className="mt-1 text-sm text-muted-foreground">{item.category}</p>
                         
@@ -105,7 +105,7 @@ export function CartDrawer() {
               <div className="border-t p-4 bg-background">
                 <div className="flex justify-between text-base font-medium mb-4">
                   <p>Subtotal</p>
-                  <p>${cartTotal}</p>
+                  <p>${cartTotal.toFixed(2)}</p>
                 </div>
                 <p className="mt-0.5 text-sm text-muted-foreground mb-4">
                   Shipping and taxes calculated at checkout.

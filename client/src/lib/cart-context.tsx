@@ -8,7 +8,7 @@ export interface CartItem extends Product {
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (product: Product) => void;
+  addToCart: (product: Product, quantity?: number) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -18,28 +18,48 @@ interface CartContextType {
   setIsCartOpen: (open: boolean) => void;
 }
 
+const CART_STORAGE_KEY = 'laptebota-cart';
+
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+function loadCartFromStorage(): CartItem[] {
+  try {
+    const stored = localStorage.getItem(CART_STORAGE_KEY);
+    if (stored) return JSON.parse(stored);
+  } catch {
+    // ignore corrupt storage
+  }
+  return [];
+}
+
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(loadCartFromStorage);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { toast } = useToast();
 
-  // Initial load from local storage could go here
-  
-  const addToCart = (product: Product) => {
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+  }, [items]);
+
+  const addToCart = (product: Product, quantity = 1) => {
     setItems(current => {
       const existing = current.find(item => item.id === product.id);
       if (existing) {
-        toast({ title: "Updated quantity", description: `${product.name} quantity increased.` });
-        return current.map(item => 
-          item.id === product.id 
-            ? { ...item, quantity: item.quantity + 1 }
+        toast({
+          title: "Updated quantity",
+          description: `${product.name} quantity increased.`,
+        });
+        return current.map(item =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       }
-      toast({ title: "Added to cart", description: `${product.name} added to your cart.` });
-      return [...current, { ...product, quantity: 1 }];
+      toast({
+        title: "Added to cart",
+        description: `${product.name} added to your cart.`,
+      });
+      return [...current, { ...product, quantity }];
     });
     setIsCartOpen(true);
   };
@@ -53,8 +73,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       removeFromCart(productId);
       return;
     }
-    setItems(current => 
-      current.map(item => 
+    setItems(current =>
+      current.map(item =>
         item.id === productId ? { ...item, quantity } : item
       )
     );
@@ -63,7 +83,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const clearCart = () => setItems([]);
 
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
-  const cartTotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const cartTotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <CartContext.Provider value={{
